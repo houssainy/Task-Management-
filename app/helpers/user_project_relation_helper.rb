@@ -1,0 +1,2 @@
+module UserProjectRelationHelper
+end
