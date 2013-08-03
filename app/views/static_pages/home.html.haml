@@ -1,0 +1,4 @@
+- if !current_user.nil? 
+  = current_user.first_name << " "<< current_user.last_name 
+  = image_tag current_user.photo.url(:small)
+  

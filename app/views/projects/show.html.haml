@@ -1,0 +1,6 @@
+%h1 you are in show project 
+%h1= params[:id]
+
+- if @users.any? 
+  %ol.users
+    = render @users
