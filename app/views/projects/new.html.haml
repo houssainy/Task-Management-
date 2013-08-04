@@ -1,7 +1,7 @@
 .NewProject
   %h1 New Project
 
-  = form_for( @project) do |f|
+  = form_for( @project ) do |f|
     = f.label :title
     = f.text_field :title
     %br
@@ -11,4 +11,14 @@
     = f.text_area :descreption
     %br
 
+    .UserStoryForm
+      = f.fields_for :user_story do |pf|
+        User Story: 
+        %br
+        = pf.text_field :title
+        %br
+        %br
+
     = f.submit "Create New Project" , class: "btn btn-medium btn-primary"
+
+  

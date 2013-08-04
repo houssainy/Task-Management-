@@ -2,12 +2,13 @@ class ProjectsController < ApplicationController
 	before_filter :deny_to_visitors
 
 	def new
-		@project = Project.new 
+		@project = Project.new
+    @story = UserStory.new 
 	end
 
 	def create
-    
-    if (@project = current_user.projects.create!(project_params) )
+    #params = { member: { title: :title , descreption: :descreption , user_stories_attributes: [:title] } }
+    if (@project = current_user.projects.create!( project_params )  )
       flash[:success] = "Project created!"
       redirect_to project_path @project
     else
@@ -31,6 +32,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-    	params.require(:project).permit(:title , :descreption)
+    	params.require(:project).permit(:title , :descreption , user_stories: [:title])
     end
 end
