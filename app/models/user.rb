@@ -14,8 +14,5 @@ class User < ActiveRecord::Base
   validates_attachment_size :photo, :less_than => 5.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png' , 'image/gif']
 
-
-   has_many :user_project_relations, foreign_key: "project_id", dependent: :destroy
-   #has_many :projects, through: :user_project_relations 
-
+  has_and_belongs_to_many :projects
 end

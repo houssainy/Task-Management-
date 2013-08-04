@@ -2,10 +2,13 @@
   .navbar-inner
     .container
       = link_to "Trello", root_path, id: "logo"
+      - if !current_user.nil?
+        = link_to current_user.first_name, current_user
       %ul.nav.pull-right
         %li= link_to "Home", root_path
         %li= link_to "Help", '#'
-        %li= link_to "Projects", '#'
+        %li= link_to "Projects", projects_path
+
         - if signed_in?
           %li.dropdown#fat-menu
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}

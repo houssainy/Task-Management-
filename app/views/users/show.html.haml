@@ -1,7 +1,16 @@
 %h2
   = @user.first_name << " " << @user.last_name
-.span4
-  = image_tag @user.photo.url(:small)
+
+= image_tag @user.photo.url(:small)
+%br
+%br
 
 -if @user == current_user
-  = link_to "New Project" , new_project_path , class: "btn btn-large btn-primary"   
+  = link_to "New Project" , new_project_path , class: "btn btn-large btn-primary"
+  %br
+  %br
+  
+  - if @projects.any? 
+    %ol.projects
+      = render @projects
+

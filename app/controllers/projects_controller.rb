@@ -3,12 +3,14 @@ class ProjectsController < ApplicationController
 
 	def new
 		@project = Project.new 
+    2.times do
+       @user_story = @project.user_stories.build
+       @user_story.tasks.build 
+    end
 	end
 
 	def create
-		#@relation = current_user.user_project_relations.new()
-    @project = @relation.build(project_params)
-    if @project.save
+    if (@project = current_user.projects.create!(project_params) )
       flash[:success] = "Project created!"
       redirect_to project_path @project
     else
@@ -17,8 +19,14 @@ class ProjectsController < ApplicationController
     end
 	end
 
-    def show
-    end
+  def show
+    @project = Project.find(params[:id])
+    @users = @project.users.paginate(page: params[:page])
+  end
+  
+  def index
+    @projects = Project.paginate(page: params[:page])
+  end
 
   private
 	def deny_to_visitors
@@ -26,6 +34,6 @@ class ProjectsController < ApplicationController
     end
 
     def project_params
-    	params.require(:project).permit(:title , :descreption)
+    	params.require(:project).permit(:title , :descreption , user_stories_attributes: [:title , tasks_attributes: :descreption] )
     end
 end

@@ -11,4 +11,7 @@
     = f.text_area :descreption
     %br
 
+    = f.fields_for :user_stories do |builder|
+      = render 'user_story_field', :f => builder
+
     = f.submit "Create New Project" , class: "btn btn-medium btn-primary"
