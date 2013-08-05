@@ -1,9 +1,12 @@
 .fields
   %p
+    %h2 User Stories :
     = f.label :title , "User Story :"
     = f.text_field :title
-    = link_to_remove_fields "remove" , f
+    = f.link_to_remove "Remove"
  
-    %h1 Tasks :
+    %h4 Tasks :
     = f.fields_for :tasks do |builder|
       = render 'task_field', :f => builder
+    = f.link_to_add "Add Task", :tasks
+    

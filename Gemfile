@@ -42,6 +42,9 @@ gem 'will_paginate'
 
 #paper clip
 gem 'paperclip'
+
+#nested_form
+gem "nested_form"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
