@@ -1,6 +1,7 @@
 TaskManager::Application.routes.draw do
   devise_for :users
   resources :users , only:[:show , :index]
+
   resources :projects
   
   root 'static_pages#home'

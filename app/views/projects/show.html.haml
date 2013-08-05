@@ -1,5 +1,18 @@
+
 %h1 you are in show project 
 %h1= params[:id]
+
+- if @project.user_stories.any?
+  %h3 User Stries :
+  %ol
+    - @project.user_stories.each do |user_story|
+      %li= user_story.title
+
+      - if user_story.tasks.any?
+        %h1 Tasks :
+        %ol
+          - user_story.tasks.each do |task|
+            %li= task.descreption
 
 - if @users.any? 
   %ol.users

@@ -36,8 +36,10 @@ gem 'devise' , '3.0.0.rc'
 #haml
 gem 'haml'
 
+
 #will_paginate
 gem 'will_paginate'
+
 #paper clip
 gem 'paperclip'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
