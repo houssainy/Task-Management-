@@ -15,9 +15,23 @@
       = render 'user_story_field', :f => builder
     // = link_to_add_fields "Add User Story", f, :user_stories 
     = f.link_to_add "Add User Story", :user_stories
+    %br
+
     = f.submit "Create New Project" , class: "btn btn-medium btn-primary"
-    = f.collection_select :users, User.all, :id, :prompt true
-    %h3 Select User to assign :
-    //= select_tag(:users , :first_name , User.all)
+
+    %h3 Select Assigned Users :
+    = select_tag :user, options_from_collection_for_select(User.all, :id, :first_name), :onchange => 'add_new_user()' , :prompt => "Please select user"
+    %br 
+    
+    /- itemlist = User.find(:all,:select => 'first_name')
+    //= select_tag :user , options_for_select(users , { :prompt => "Select a Country"}) 
+    
+    / # = @user = User.pluck(:first_name)
+    / = f.select :users, @user    
+    // = collection_select :user, User.find(:all), :id, :first_name,{ :prompt => "Select a Country"}
+    
+
+    
+
 
   
